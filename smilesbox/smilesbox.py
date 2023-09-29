@@ -8,7 +8,7 @@ import warnings
 from shutil import copyfile
 import os,glob,wget
 from copy import deepcopy
-import openbabel
+from openbabel import pybel
 
 class SMILESbox:
     
@@ -21,7 +21,10 @@ class SMILESbox:
         mol.center()
         return(mol)
     
-    def save_simulation_box(self,simulation_box=None,path=None,name=None):
+    def rotate(self,which='x',amount=90,reset=True):
+
+    
+    def save_vasp(self,simulation_box=None,path=None,name=None):
         if not name == None:
             if not path == None:
                 end = os.path.join(str(path),str(name))
@@ -33,38 +36,18 @@ class SMILESbox:
                 end = os.path.join(str(path),str('POSCAR'))
                 simulation_box.write(filename=end,vasp5=True,sort=True)
             else:
-                simulation_box.write(filename='POSCAR',vasp5=True,sort=True) 
+                simulation_box.write(filename='POSCAR',vasp5=True,sort=True)             
     
-    def save_xyz(self,molecule=None,path=None,name=None):
-        if not name == None:
-            if not path == None:
-                end = os.path.join(str(path),str(name))
-                molecule.write(filename=end)
-            else:
-                molecule.write(filename=name)
-        else:
-            if not path==None:
-                end = os.path.join(str(path),str('molecule.xyz'))
-                molecule.write(filename=end)
-            else:
-                molecule.write(filename='molecule.xyz') 
-                
-    def download_molecule_from_smiles(self,molecules=None):
-        
-        def _download_xyz(smiles):
-            url = 'https://cactus.nci.nih.gov/chemical/structure/{}/file?format=xyz'.format(smiles)
-            if not glob.glob('temp*.xyz') == []: # tidy up 
-                [os.remove(x) for x in glob.glob('temp*.xyz')]
-            wget.download(url,out='temp.xyz')
-            molecule = read('temp.xyz')
-            if not glob.glob('temp*.xyz') == []: # tidy up 
-                [os.remove(x) for x in glob.glob('temp*.xyz')]
-            return(molecule)
-        
-        downloaded_data = {}
-        for mol,smiles in molecules.items():
-            try:
-                downloaded_data[mol] = _download_xyz(smiles)
-            except:
-                downloaded_data[mol] = None
-        return(downloaded_data)
+    def smiles_to_atoms(self,smiles=None):
+        molecule = pybel.readstring("smi",smiles)
+        molecule.make3D()
+        symbols = []
+        positions = []
+        for i in molecule.atoms:
+            coords = list(i.coords)
+            atom = [k for k,v in ase.data.atomic_numbers.items() if v == i.atomicnum]
+            symbols.append(atom[0])
+            positions.append(coords)
+        atoms = Atoms(symbols=symbols,positions=positions)
+        self.atoms == atoms
+        #return(atoms)
