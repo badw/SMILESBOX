@@ -123,7 +123,8 @@ def _get_parser():
 
     parser.add_argument(
         "--dimensions",
-        default=[10,10,10],
+        nargs=3,
+        default=(10,10,10),
         help="simulation box dimensions. default=[10,10,10]"
     )
     return(parser)
@@ -137,6 +138,8 @@ def main():
         filemode="w",
         format="%(message)s"
     )
+
+    dim = [float(x) for x in args.dimensions]
     console=logging.StreamHandler()
     logging.info(" ".join(sys.argv[:]))
     logging.getLogger("").addHandler(console)
@@ -147,7 +150,7 @@ def main():
         save=args.save,
         smiles=args.smiles,
         box=args.box,
-        dimensions=args.dimensions,
+        dimensions=dim,
         rotate=args.rotate,
         rotate_vector=args.vector,
         rotate_angle=args.angle

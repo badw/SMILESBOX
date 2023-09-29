@@ -2,16 +2,13 @@
 
 ##### Information:
 
-A way of taking a SMILES molecule and downloading it as a .xyz file, .cif, or .vasp POSCAR file
+A way of taking a SMILES string and turning it into a simple simulation cell 
 
 
-Todo:
-- [ ] tidy up code
+##### Installation:
 
-- [ ] rotate molecule in x,y,z directions within the box
+`pip install .`
 
-- [ ] pack molecules
+##### Usage (CLI):
 
-- [ ] apply to existing (VASP) POSCAR i.e. adsorption
-
-- [ ] needs a CLI
+smilesbox-generate -s "CC" --box --dimensions 10,
