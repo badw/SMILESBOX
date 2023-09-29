@@ -33,7 +33,7 @@ class SMILESbox:
         if not np.sum(self.atoms.cell) == 0:
             self.atoms.write(os.path.join(directory,'{}{}'.format(filename,'.vasp')),vasp5=True,sort=True)        
         else:
-            self.atoms.write(os.path.join(directory,'{}{}'.format(filename,'.xyz')),xyz=True)  
+            self.atoms.write(os.path.join(directory,'{}{}'.format(filename,'.xyz')))  
     
     def smiles_to_atoms(self,smiles=None):
         molecule = pybel.readstring("smi",smiles)

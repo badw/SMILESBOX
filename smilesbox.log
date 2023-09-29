@@ -1,0 +1,36 @@
+/Users/badw/miniconda3/envs/py39/bin/smilesbox-generate -s [S-]c1sn[n+](c1)CC
+SMILES:
+
+ [S-]c1sn[n+](c1)CC
+
+FORMULA:
+
+ C4H6N2S2
+
+CELL:
+
+[[0. 0. 0.]
+ [0. 0. 0.]
+ [0. 0. 0.]]
+
+                                                  
+                                                  
+                                                  
+                         S_                       
+                                                  
+                         |                        
+                         __                       
+              H        _/_ \_                     
+                ____\___/    \S                   
+                     |        /                   
+                     \       /                    
+         H\           N ___ N                     
+           \                                      
+            \___    _/                            
+        ___/|   \__/                              
+      H     |     |\___                           
+                  |    H                          
+           H     H                                
+                                                  
+                                                  
+
