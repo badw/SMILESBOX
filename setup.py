@@ -36,7 +36,7 @@ setup(
         "tqdm",
         "wget",
         "numpy",
-        "openbabel"
+ #       "openbabel"
     ],
     entry_points={
         "console_scripts":[
