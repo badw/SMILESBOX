@@ -35,7 +35,7 @@ setup(
         "ase",
         "tqdm",
         "wget",
-        "numpy"
+        "numpy",
         "openbabel"
     ],
     entry_points={
