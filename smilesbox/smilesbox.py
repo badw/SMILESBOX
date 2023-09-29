@@ -1,6 +1,7 @@
 from ase.build import molecule
 import ase.data.pubchem as pubchem
 from ase import Atoms
+import ase
 from ase.io import read,write
 
 from tqdm import tqdm
@@ -22,6 +23,7 @@ class SMILESbox:
         return(mol)
     
     def rotate(self,which='x',amount=90,reset=True):
+        print("rotate")
 
     
     def save_vasp(self,simulation_box=None,path=None,name=None):
