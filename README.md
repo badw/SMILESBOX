@@ -11,7 +11,7 @@ A way of taking a SMILES string and turning it into a simple simulation cell
 
 ##### Usage (CLI):
 
-smilesbox-generate -s "CC" --box --dimensions 10 10 10 --save
+`smilesbox-generate -s "CC" --box --dimensions 10 10 10 --save`
 
 
 ##### Output:
