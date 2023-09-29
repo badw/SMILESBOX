@@ -35,6 +35,12 @@ setup(
         "ase",
         "tqdm",
         "wget",
-        "openbabel"
+        "numpy"
+    #    "openbabel"
     ],
+    entry_points={
+        "console_scripts":[
+            "smilesbox-generate = smilesbox.cli:main"
+            ]
+        }
 )

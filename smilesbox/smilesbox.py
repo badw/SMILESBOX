@@ -10,35 +10,30 @@ from shutil import copyfile
 import os,glob,wget
 from copy import deepcopy
 from openbabel import pybel
+import numpy as np 
 
 class SMILESbox:
     
     def __init__(self):
         '''class for downloading and creating simulation-ready files for both xyz, .vasp, .cif'''
     
-    def create_simulation_box(self,molecule=None,boxsize=10):
-        mol = deepcopy(molecule)
-        mol.set_cell([boxsize,boxsize,boxsize])
-        mol.center()
-        return(mol)
+    def add_box(self,dimensions=[10,10,10]):
+        '''default = [10,10,10]
+        todo:
+        * add whether molecule has enough vacuum'''
+        self.atoms.set_cell(dimensions)
+        self.atoms.set_pbc(True)
+        self.atoms.center()
     
-    def rotate(self,which='x',amount=90,reset=True):
-        print("rotate")
-
+    def rotate(self,vector='x',angle=90):
+        self.atoms.rotate(v=vector,angle=angle)
     
-    def save_vasp(self,simulation_box=None,path=None,name=None):
-        if not name == None:
-            if not path == None:
-                end = os.path.join(str(path),str(name))
-                simulation_box.write(filename=end,vasp5=True,sort=True)
-            else:
-                simulation_box.write(filename=name,vasp5=True,sort=True)
+    def save(self,filename='POSCAR',directory='.'):
+        ''' checks if there is a box installed if it prints to vasp'''
+        if not np.sum(self.atoms.cell) == 0:
+            self.atoms.write(os.path.join(directory,'{}{}'.format(filename,'.vasp')),vasp5=True,sort=True)        
         else:
-            if not path==None:
-                end = os.path.join(str(path),str('POSCAR'))
-                simulation_box.write(filename=end,vasp5=True,sort=True)
-            else:
-                simulation_box.write(filename='POSCAR',vasp5=True,sort=True)             
+            self.atoms.write(os.path.join(directory,'{}{}'.format(filename,'.xyz')),xyz=True)  
     
     def smiles_to_atoms(self,smiles=None):
         molecule = pybel.readstring("smi",smiles)
@@ -51,5 +46,6 @@ class SMILESbox:
             symbols.append(atom[0])
             positions.append(coords)
         atoms = Atoms(symbols=symbols,positions=positions)
-        self.atoms == atoms
+        self.atoms = atoms
+        self.molecule=molecule
         #return(atoms)
