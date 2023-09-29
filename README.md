@@ -51,6 +51,6 @@ CELL:
                                         
 ```
 
-![ethane molecule](https://github.com/badw/smilesbox/blob/devel/POSCAR.png?raw=true)
+![ethane molecule](https://github.com/badw/smilesbox/blob/devel/example/POSCAR.png?raw=true)
 
 
