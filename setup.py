@@ -36,7 +36,7 @@ setup(
         "tqdm",
         "wget",
         "numpy",
- #       "openbabel"
+        "openbabel-wheel"
     ],
     entry_points={
         "console_scripts":[
