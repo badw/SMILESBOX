@@ -4,14 +4,13 @@ smilesbox: simulation structures from SMILES.
 
 from setuptools import find_packages, setup
 
-from sumo import __version__
 
 with open("README.md") as file:
     long_description = file.read()
 
 setup(
     name="smilesbox",
-    version=__version__,
+    version=0.1,
     description="SMILESBOX",
     url="https://github.com/badw/SMILESBOX",
     author="Benjamin A. D. Williamson",
