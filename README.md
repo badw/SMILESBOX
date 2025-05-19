@@ -24,7 +24,7 @@ an example Jupyter Notebook can be found here:
 `./examples/example.ipynb`
 
 
-```example
+```
 from smilesbox.smilesbox import SMILESbox
 sb = SMILESbox()
 sb.smiles_to_atoms('CC')
@@ -37,4 +37,10 @@ sb.save('molecule.vasp')
 <img src="./static/POSCAR.png" height="300">
 </p>
 
+
+### ToDo: 
+
+- [ ] make different cell shapes 
+- [ ] add more than one molecule to the cell 
+- [ ] apply to surface slab models 
 
