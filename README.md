@@ -34,7 +34,7 @@ sb.save('molecule.vasp')
 
 
 <p align="center">
-<img src="./static/POSCAR.png" height="600">
+<img src="./static/POSCAR.png" height="300">
 </p>
 
 
