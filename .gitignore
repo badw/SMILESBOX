@@ -1,3 +1,3 @@
-smilesbox.egg-info
-notebooks/.ipynb_checkpoints
-smilesbox/__pycache__
+**/smilesbox.egg-info
+**/.ipynb_checkpoints
+**/__pycache__
