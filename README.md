@@ -33,6 +33,8 @@ sb.save('molecule.vasp')
 ```
 
 
-![ethane molecule](https://github.com/badw/smilesbox/blob/devel/example/POSCAR.png?raw=true)
+<p align="center">
+<img src="./static/POSCAR.png" height="600">
+</p>
 
 
