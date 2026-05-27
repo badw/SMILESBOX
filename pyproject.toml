@@ -30,7 +30,7 @@ dependencies = [
         "tqdm",
         "wget",
         "numpy",
-        "openbabel-wheel"
+        "openbabel>=3.2.0"
                 ]
 
 [project.optional-dependencies]
